@@ -34,7 +34,7 @@
 						%>
 <form action="../editBooks" method="post">
 <div class="form-group">
-<input type="text" name="id" value="<%= b.getBookId() %>"  type="hidden"/>
+<input type="hidden" name="id" value="<%= b.getBookId() %>"  />
 </div>
 <div class="form-group">
 <label for="exampleInputEmail1">Book Name*</label> 

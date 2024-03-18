@@ -20,7 +20,7 @@ public class BookDAOImpl implements BookDAO{
 	public boolean addBooks(BookDetails b) {
 		boolean f = false;
 		try {
-			String queryString = "insert into book_dtls(bookname, author, price, bookCategory, status, ref_id, email) values(?,?,?,?,?,?,?)";
+			String queryString = "insert into book_details(bookname, author, price, bookCategory, status, ref_id, email) values(?,?,?,?,?,?,?)";
 			PreparedStatement ps = conn.prepareStatement(queryString);
 			ps.setString(1, b.getBookName());
 			ps.setString(2, b.getAuthor());
@@ -50,7 +50,7 @@ public class BookDAOImpl implements BookDAO{
 		BookDetails bookDetails = null;
 		
 		try {
-			String queryString = "select * from book_dtls";
+			String queryString = "select * from book_details";
 			
 			PreparedStatement pStatement = conn.prepareStatement(queryString);
 			ResultSet rSet = pStatement.executeQuery();
@@ -80,7 +80,7 @@ public class BookDAOImpl implements BookDAO{
 	public BookDetails getBookById(int id) {
 		BookDetails bookDetails = null;
 		try {
-			String queryString = "select * from book_dtls where bookId=?";
+			String queryString = "select * from book_details where bookId=?";
 			PreparedStatement pStatement = conn.prepareStatement(queryString);
 			pStatement.setInt(1, id);
 			ResultSet rSet = pStatement.executeQuery();
@@ -106,7 +106,7 @@ public class BookDAOImpl implements BookDAO{
 	public String getBookStatus(int bookId) {
 	    String status = "";
 	    try {
-	        String sqlString = "select status from book_dtls where bookId=?";
+	        String sqlString = "select status from book_details where bookId=?";
 	        PreparedStatement pStatement = conn.prepareStatement(sqlString);
 	        pStatement.setInt(1, bookId);
 	        ResultSet rs = pStatement.executeQuery();
@@ -125,7 +125,7 @@ public class BookDAOImpl implements BookDAO{
 		boolean f = false;
 		
 		try {
-			String queryString = "update book_dtls set bookName=?, author=?, price=?, status=? where bookId=?";
+			String queryString = "update book_details set bookName=?, author=?, price=?, status=? where bookId=?";
 			PreparedStatement pStatement = conn.prepareStatement(queryString);
 			pStatement.setString(1, b.getBookName());
 			pStatement.setString(2, b.getAuthor());
@@ -153,7 +153,7 @@ public class BookDAOImpl implements BookDAO{
 		boolean f = false;
 		
 		try {
-			String queryString = "delete from book_dtls where bookId=?";
+			String queryString = "delete from book_details where bookId=?";
 			PreparedStatement psPreparedStatement = conn.prepareStatement(queryString);
 			psPreparedStatement.setInt(1, id);
 			int i = psPreparedStatement.executeUpdate();
@@ -176,7 +176,7 @@ public class BookDAOImpl implements BookDAO{
 		List<BookDetails> list = new ArrayList<BookDetails>();
 		BookDetails bookDetails = null;
 		try {
-			String sqlString = "select * from book_dtls where bookCategory=? and status=? order by bookId DESC ";
+			String sqlString = "select * from book_details where bookCategory=? and status=? order by bookId DESC ";
 			PreparedStatement pStatement = conn.prepareStatement(sqlString);
 			pStatement.setString(1, "New");
 			pStatement.setString(2, "Active");
@@ -212,7 +212,7 @@ public class BookDAOImpl implements BookDAO{
 		List<BookDetails> list = new ArrayList<BookDetails>();
 		BookDetails bookDetails = null;
 		try {
-			String sqlString = "select * from book_dtls where status=? order by bookId DESC ";
+			String sqlString = "select * from book_details where status=? order by bookId DESC ";
 			PreparedStatement pStatement = conn.prepareStatement(sqlString);
 			pStatement.setString(1, "Active");
 			
@@ -246,7 +246,7 @@ public List<BookDetails> getOldBookDtls() {
 		List<BookDetails> list = new ArrayList<BookDetails>();
 		BookDetails bookDetails = null;
 		try {
-			String sqlString = "select * from book_dtls where bookCategory=? and status=? order by bookId DESC ";
+			String sqlString = "select * from book_details where bookCategory=? and status=? order by bookId DESC ";
 			PreparedStatement pStatement = conn.prepareStatement(sqlString);
 			pStatement.setString(1, "Old");
 			pStatement.setString(2, "Active");
@@ -282,7 +282,7 @@ public List<BookDetails> getOldBookDtls() {
 		List<BookDetails> list = new ArrayList<BookDetails>();
 		BookDetails bookDetails = null;
 		try {
-			String sqlString = "select * from book_dtls where status=? order by bookId DESC ";
+			String sqlString = "select * from book_details where status=? order by bookId DESC ";
 			PreparedStatement pStatement = conn.prepareStatement(sqlString);
 			pStatement.setString(1, "Active");
 			
@@ -315,7 +315,7 @@ public List<BookDetails> getOldBookDtls() {
 		List<BookDetails> list = new ArrayList<BookDetails>();
 		BookDetails bookDetails = null;
 		try {
-			String sqlString = "select * from book_dtls where bookCategory=? and status=? order by bookId DESC ";
+			String sqlString = "select * from book_details where bookCategory=? and status=? order by bookId DESC ";
 			PreparedStatement pStatement = conn.prepareStatement(sqlString);
 			pStatement.setString(1, "New");
 			pStatement.setString(2, "Active");
@@ -349,7 +349,7 @@ public List<BookDetails> getOldBookDtls() {
 		List<BookDetails> list = new ArrayList<BookDetails>();
 		BookDetails bookDetails = null;
 		try {
-			String sqlString = "select * from book_dtls where bookCategory=? and status=? order by bookId DESC ";
+			String sqlString = "select * from book_details where bookCategory=? and status=? order by bookId DESC ";
 			PreparedStatement pStatement = conn.prepareStatement(sqlString);
 			pStatement.setString(1, "Old");
 			pStatement.setString(2, "Active");
@@ -384,7 +384,7 @@ public List<BookDetails> getOldBookDtls() {
 		
 		try {
 			
-			String sqlString = "select * from book_dtls where bookCategory=? and email=?";
+			String sqlString = "select * from book_details where bookCategory=? and email=?";
 			PreparedStatement ps = conn.prepareStatement(sqlString);
 			ps.setString(1, cate);
 			ps.setString(2, email);
@@ -418,7 +418,7 @@ public List<BookDetails> getOldBookDtls() {
 		
 		boolean f = false;
 		try {
-			String sqlString = "delete from book_dtls where bookCategory=? and email=? and bookId=?";
+			String sqlString = "delete from book_details where bookCategory=? and email=? and bookId=?";
 			PreparedStatement ps = conn.prepareStatement(sqlString);
 			ps.setString(1, cate);
 			ps.setString(2, email);
@@ -448,7 +448,7 @@ public List<BookDetails> getOldBookDtls() {
 		
 		try {
 //			System.out.println(ch);
-			String sqlString = "select * from book_dtls where bookname like ? or author like ? or bookCategory like ? or ref_id like ? and status=?";
+			String sqlString = "select * from book_details where bookname like ? or author like ? or bookCategory like ? or ref_id like ? and status=?";
 			PreparedStatement ps = conn.prepareStatement(sqlString);
 			ps.setString(1, "%"+ch+"%");
 			ps.setString(2, "%"+ch+"%");
