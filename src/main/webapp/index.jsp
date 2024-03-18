@@ -1,7 +1,7 @@
 <%@page import="com.entity.BookDetails"%>
 <%@page import="com.DAO.BookDAOImpl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+ 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -15,6 +15,13 @@
 <%@page import="com.DB.DBConnect" %>
 <%@page import="com.entity.*" %>
 <style type=text/css>
+.text-3d {
+      text-shadow: 2px 2px 2px #888; /* Adjust values as needed */
+    }
+	h1{
+	font-size: 80px; 
+	font-style: italic;
+	}
 	.back-img{
 		height: 50%;
 		width: 100%;
@@ -39,43 +46,40 @@
     display: none;
 	}
 </style>
-
+ 
 </head>
 <body style="background-color: #f7f7f7;">
-
+ 
 <%User u = (User)session.getAttribute("userObj"); %>
-
+ 
 	<%@include file="all_component/navbar.jsp" %>
-	
-	<div class="container-fluid back-img">
-		<div id="carouselExampleControls" class="carousel slide position-relative" data-ride="carousel">
-			<div class="carousel-content">
-				<h2>Book OLX</h2>
-	      	</div>
-		  <div class="carousel-inner">
-		    <div class="carousel-item active">
-		      <img class="d-block w-100" src="img/165818.jpg" alt="First slide">
-		    </div>
-		    <div class="carousel-item">
-		      <img class="d-block w-100" src="img/f.jpg" alt="Second slide">
-		    </div>
-		    <div class="carousel-item">
-		      <img class="d-block w-100" src="img/k.webp" alt="Third slide">
-		    </div>
-		  </div>
-		  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		    <span class="sr-only">Previous</span>
-		  </a>
-		  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-		    <span class="sr-only">Next</span>
-		  </a>
-		</div>
-		
-	</div>
-
-	
+<div class="container-fluid back-img">
+<div id="carouselExampleControls" class="carousel slide position-relative" data-ride="carousel">
+<div class="carousel-content">
+<h1 class="text-3d">BOOK OLX</h1>
+</div>
+<div class="carousel-inner">
+<div class="carousel-item active">
+<img class="d-block w-100" src="img/165818.jpg" alt="First slide">
+</div>
+<div class="carousel-item">
+<img class="d-block w-100" src="img/f.jpg" alt="Second slide">
+</div>
+<div class="carousel-item">
+<img class="d-block w-100" src="img/k.webp" alt="Third slide">
+</div>
+</div>
+<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+<span class="sr-only">Previous</span>
+</a>
+<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+<span class="carousel-control-next-icon" aria-hidden="true"></span>
+<span class="sr-only">Next</span>
+</a>
+</div>
+</div>
+ 
 	
 </body>
 </html>

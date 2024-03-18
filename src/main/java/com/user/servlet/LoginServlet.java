@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet {
         try {
             String email = request.getParameter("email");
             String password = request.getParameter("password");
-            if("admin@gmail.com".equals(email) && "admin".equals(password)) {
+            if("bookolx05@gmail.com".equals(email) && "jvkp05".equals(password)) {
 				User user = new User();
 				user.setName("Admin");
 				session.setAttribute("userObj", user);

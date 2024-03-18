@@ -20,6 +20,11 @@
 	::-webkit-scrollbar {
     display: none;
 	}
+	body {
+	background-image: url('img/book3.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
 </style>
 
 </head>
@@ -39,7 +44,7 @@
 				
 			<div class="col-md-3 m-0.5 pb-2">
 				
-				<div class="card card-ho">
+				<div class="card card-ho"  style="background-color: rgba(211, 211, 211, 0.7);">
 					<div class="card-body text-center">
 					    <p><%= b.getRefId() %></p>
 						<p><%= b.getBookName() %></p>

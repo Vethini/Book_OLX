@@ -77,7 +77,7 @@ public class ForgotPasswordServlet extends HttpServlet {
             message.setSubject("Your OTP for password reset");
             message.setText("Your OTP is: " + otp);
             Transport.send(message);
-            System.out.println("Sent message successfully....");
+          //  System.out.println("Sent message successfully....");
         } catch (MessagingException mex) {
             mex.printStackTrace();
         }
