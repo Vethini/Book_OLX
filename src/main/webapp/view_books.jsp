@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Book Details</title>
 <%@ include file="all_component/allCss.jsp"%>
 <%@ page import="java.sql.Connection"%>
 <%@ page import="java.util.*"%>
@@ -125,14 +125,18 @@ to {
 <div class="col-md-6 p-5 border text-center"
 				style="background-color: rgba(255, 255, 255, 0.7);">
 <h2 style="color: green;"><%= b.getBookName() %></h2>
+
 <% if ("Old".equals(b.getBookCategory())) { %>
 <h5 class="text-primary text-center">Contact To Seller</h5>
+
+<% } %>
 <h5 class="text-primary text-center">
 <i class="fa-solid fa-envelope"></i> Email:
 <%=b.getEmail() %></h5>
-<% } %>
 <div class="row">
+
 <div class="col-md-4 text-danger p-2 text-center">
+
 <i class="fa-solid fa-money-bill-1-wave fa-2x"></i>
 <h3>Cash On Delivery</h3>
 </div>
