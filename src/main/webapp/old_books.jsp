@@ -19,7 +19,7 @@
 <%@include file="all_component/navbar.jsp" %>
 
 <c:if test="${empty userObj}">
-	<c:redirect url="../login.jsp" />
+	<c:redirect url="../login" />
 </c:if>
 
 <%User u = (User)session.getAttribute("userObj"); %>

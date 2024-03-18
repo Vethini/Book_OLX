@@ -141,7 +141,7 @@
         </div>
 
         <div class="col-md-6">
-            <a href="old_book.jsp">
+            <a href="old_books.jsp">
                 <div class="card">
                     <div class="card-body text-center">
                         <div class="text-primary">

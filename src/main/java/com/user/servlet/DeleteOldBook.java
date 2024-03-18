@@ -28,10 +28,10 @@ public class DeleteOldBook extends HttpServlet{
 			HttpSession session = request.getSession();
 			if(f) {
 				session.setAttribute("succMsg", "Old Book removed successfully.");
-				response.sendRedirect("old_book.jsp");
+				response.sendRedirect("old_books.jsp");
 			}else {
 				session.setAttribute("failedMsg", "Something went wrong on server.");
-				response.sendRedirect("old_book.jsp");
+				response.sendRedirect("old_books.jsp");
 			}
 			
 			
