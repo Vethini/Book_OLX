@@ -109,6 +109,7 @@
     </style>
 </head>
 <body>
+<%response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); %>
     <div class="container">
         <h2>Change Password</h2>
         <form action="changePassword" method="post">

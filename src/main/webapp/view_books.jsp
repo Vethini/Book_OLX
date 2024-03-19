@@ -74,7 +74,7 @@ to {
 </head>
 <body
 	style="background-image: url('img/view1.jpg'); background-size: cover;">
- 
+ <%response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); %>
 	<% User u = (User)session.getAttribute("userObj");
    if (u == null) {
        // Handle the case where user is not logged in

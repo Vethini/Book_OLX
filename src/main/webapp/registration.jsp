@@ -11,6 +11,7 @@
 </head>
 <!-- <body style="background-color: #f0f1f2;"> -->
 <body style="background-image: url('img/register.webp'); background-size: cover; background-position: center;">
+<%response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); %>
 <%@include file="all_component/navbar.jsp" %>
 <div class="container p-3"  style="margin-left: -250px;">
 <div class="row">

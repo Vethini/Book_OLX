@@ -84,6 +84,7 @@
     </style>
 </head>
 <body>
+<%response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); %>
     <div class="container">
         <h2>Enter OTP</h2>
         <% if (request.getAttribute("error") != null) { %>

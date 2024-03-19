@@ -29,6 +29,7 @@
 
 </head>
 <body>
+<%response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); %>
 		<%@include file="all_component/navbar.jsp" %>
 		<%User u = (User)session.getAttribute("userObj"); %>
 		<div class="container-fluid p-4">

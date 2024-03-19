@@ -56,6 +56,7 @@ input[type="submit"]:hover {
     </style>
 </head>
 <body>
+<%response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); %>
     <div class="container">
         <h2>Forgot Password</h2>
         <form action="resetPassword" method="post">

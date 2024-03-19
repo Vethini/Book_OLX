@@ -26,6 +26,7 @@
 <!-- <body style="background-color: #f7f7f7;"> -->
 <body style="background-image: url('img/setting.jpg'); background-size: cover; background-position: center; background-attachment: fixed; background-color: #f7f7f7;">
 		<%-- <%@include file="all_component/navbar.jsp" %> --%>
+		<%response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); %>
 		<%@include file="all_component/navbar.jsp" %>
 		
 <c:if test="${empty userObj}">

@@ -10,6 +10,7 @@
 <%@include file="all_component/allCss.jsp" %>
 </head>
 <!-- <body style="background-color: #f0f1f2;"> -->
+<%response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); %>
 <style>
     body {
         background-image: url('img/login.jpg'); /* Adjust the image URL */

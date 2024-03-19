@@ -37,7 +37,7 @@
 </head>
 
 <body>
-
+<%response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); %>
     <div class="container">
         <h1>Terms and Conditions</h1>
 

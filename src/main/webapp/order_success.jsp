@@ -41,6 +41,7 @@
 </head>
 <!-- <body style="background-color: #f7f7f7;"> -->
 <body style="background-image: url('img/order10.jpg'); background-size: cover;">
+<%response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); %>
 <%User u = (User)session.getAttribute("userObj"); %>
 
 	<%@include file="all_component/navbar.jsp" %>

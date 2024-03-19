@@ -16,6 +16,7 @@
 </head>
 <!-- <body style="background-color: #f0f1f2;"> -->
 <body style="background-image: url('img/book2.jpeg'); background-size: cover;">
+<%response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); %>
 <%@include file="all_component/navbar.jsp" %>
 <style>
 #toast {

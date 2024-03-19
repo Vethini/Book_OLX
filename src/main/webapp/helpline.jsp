@@ -66,6 +66,7 @@
     </style>
 </head>
 <body>
+<%response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); %>
     <%@include file="all_component/navbar.jsp" %>
         
     <c:if test="${empty userObj}">

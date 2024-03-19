@@ -65,7 +65,7 @@
  
 </head>
 <body>
- 
+ <%response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); %>
 <%User u = (User)session.getAttribute("userObj"); %>
  
 <c:if test="${not empty addCart}">
@@ -98,9 +98,10 @@
 <div class="card card-ho" style="background-color: rgba(211, 211, 211, 0.7);">
 <div class="card-body text-center">
 <!--  	<img src="book/<%= b.getRefId() %>" style="height:200px; width: 150px" class="img-thumblin"/> -->
-<p><%= b.getRefId() %></p>
-<p><%= b.getBookName() %></p>
+
+<h4><%= b.getBookName() %></h4>
 <p><%= b.getAuthor() %></p>
+<p><%= b.getRefId() %></p>
 <p> Category: <%= b.getBookCategory() %> </p>
 <div class="row d-flex justify-content-around">
 <% if(u == null){ %>

@@ -38,8 +38,11 @@
 <!-- <body style="background-color: #f0f1f2;"> -->
 <body
 	style="background-image: url('img/checkout1.jpg'); background-size: cover;">
+	<%response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); %>
 <%@include file="all_component/navbar.jsp"%>
- 
+ <%
+ response.setHeader("Cache-Control","no-cache, no-store,must-revalidate");
+ %>
 	<c:if test="${empty userObj}">
 <c:redirect url="../login.jsp" />
 </c:if>

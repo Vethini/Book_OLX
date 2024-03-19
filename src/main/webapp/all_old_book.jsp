@@ -70,6 +70,7 @@
 </style>
 </head>
 <body>
+<%response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); %>
 <c:if test="${not empty addCart}">
 	
 	<div id="toast"> ${addCart} </div>
@@ -100,14 +101,15 @@
 				BookDAOImpl dao3 = new BookDAOImpl(DBConnect.getConn());
 				List<BookDetails> list3 = dao3.getAllOldBooks();
 				for(BookDetails b : list3){
+					if (u == null || !b.getEmail().equals(u.getEmail())) {
 			%>	
 			<div class="col-md-3 m-0.5 pb-2">
 				
 				<div class="card card-ho"  style="background-color: rgba(211, 211, 211, 0.7);">
 					<div class="card-body text-center">
-						 <p><%= b.getRefId() %></p>
-						<p><%= b.getBookName() %></p>
-						<p><%= b.getAuthor() %></p>
+						 <h4><%= b.getBookName() %></h4>
+<p><%= b.getAuthor() %></p>
+<p><%= b.getRefId() %></p>
 						<p> Category: <%= b.getBookCategory() %> </p>
 						<%
 						if (b.getBookCategory().equals("Old") && (b.getEmail() != null && !b.getEmail().equals("bookolx05@gmail.com"))) {
@@ -155,6 +157,7 @@
 			</div>
 					
 			<%	}
+				}
 			%>
 				
 			
