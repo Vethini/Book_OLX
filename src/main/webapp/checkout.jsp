@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +28,7 @@
 	visibility: hidden;
 	box-shadow: 0px 0px 100px #000;
 }
-
+ 
 #toast.display {
 	visibility: visible;
 	animation: fadeIn 0.5, fadeOut 0.5s 2.5s;
@@ -38,20 +38,20 @@
 <!-- <body style="background-color: #f0f1f2;"> -->
 <body
 	style="background-image: url('img/checkout1.jpg'); background-size: cover;">
-	<%@include file="all_component/navbar.jsp"%>
-
+<%@include file="all_component/navbar.jsp"%>
+ 
 	<c:if test="${empty userObj}">
-		<c:redirect url="../login.jsp" />
-	</c:if>
-
+<c:redirect url="../login.jsp" />
+</c:if>
+ 
 	<%
 	User u = (User) session.getAttribute("userObj");
 	%>
-
-
+ 
+ 
 	<c:if test="${not empty inactiveBook}">
-		<div id="toast" class="alert alert-danger text-center">${inactiveBook}</div>
-		<script type="text/javascript">
+<div id="toast" class="alert alert-danger text-center">${inactiveBook}</div>
+<script type="text/javascript">
         showToast();
         function showToast() {
             $('#toast').addClass("display");
@@ -59,13 +59,13 @@
                 $("#toast").removeClass("display");
             }, 5000); // Display for 5 seconds
         }
-    </script>
-
+</script>
+ 
 		<c:remove var="inactiveBook" scope="session" />
-	</c:if>
-	<c:if test="${not empty failedMsg}">
-		<div id="toast" class="alert alert-danger text-center">${failedMsg}</div>
-		<script type="text/javascript">
+</c:if>
+<c:if test="${not empty failedMsg}">
+<div id="toast" class="alert alert-danger text-center">${failedMsg}</div>
+<script type="text/javascript">
         showToast();
         function showToast() {
             $('#toast').addClass("display");
@@ -73,33 +73,49 @@
                 $("#toast").removeClass("display");
             }, 5000); // Display for 5 seconds
         }
-    </script>
-
+</script>
+ 
 		<c:remove var="failedMsg" scope="session" />
-	</c:if>
+</c:if>
+<c:if test="${not empty succMsg}">
 
+<div id="toast"> ${succMsg} </div>
+<script type="text/javascript">
+			showToast();
+			function showToast(content)
+			{
+			    $('#toast').addClass("display");
+			    $('#toast').html(content);
+			    setTimeout(()=>{
+			        $("#toast").removeClass("display");
+			    },2000)
+			}	
+</script>
+<c:remove var="succMsg" scope="session" />
+</c:if>
+ 
 	<div class="container">
-
+ 
 		<div class="row p-2">
-			<div class="col-md-6">
-
+<div class="col-md-6">
+ 
 				<!-- <div class="card" style="background-color: rgba(0, 0, 0, 0.5);"> -->
-				<div class="card"
+<div class="card"
 					style="background-color: rgba(211, 211, 211, 0.7);">
-					<div class="card-body">
-						<h3 class="text-center text-success">Your Selected Item</h3>
-
+<div class="card-body">
+<h3 class="text-center text-success">Your Selected Item</h3>
+ 
 						<table class="table">
-							<thead>
-								<tr>
-									<th scope="col">Book Name</th>
-									<th scope="col">Author</th>
-									<th scope="col">Price</th>
-									<th scope="col">Action</th>
-								</tr>
-							</thead>
-							<tbody>
-
+<thead>
+<tr>
+<th scope="col">Book Name</th>
+<th scope="col">Author</th>
+<th scope="col">Price</th>
+<th scope="col">Action</th>
+</tr>
+</thead>
+<tbody>
+ 
 								<%
 								cartDAOimpl dao = new cartDAOimpl(DBConnect.getConn());
 								List<Cart> c = dao.getBookByUser(u.getId());
@@ -107,116 +123,116 @@
 								for (Cart ca : c) {
 									totalPrice = ca.getTotalPrice();
 								%>
-
+ 
 								<tr>
-									<th scope="row"><%=ca.getBookName()%></th>
-									<td><%=ca.getAuthor()%></td>
-									<td><%=ca.getPrice()%></td>
-									<td><a
+<th scope="row"><%=ca.getBookName()%></th>
+<td><%=ca.getAuthor()%></td>
+<td><%=ca.getPrice()%></td>
+<td><a
 										href="remove_book?bid=<%=ca.getBid()%>&&uid=<%=ca.getUserId()%>&&cid=<%=ca.getCid()%>"
 										class="btn btn-sm btn-danger">Remove</a></td>
-								</tr>
-
+</tr>
+ 
 								<%
 								}
 								%>
-								<tr>
-									<th scope="row">Total Price</th>
-									<td></td>
-									<td></td>
-									<td><%=totalPrice%></td>
-								</tr>
-							</tbody>
-						</table>
-
+<tr>
+<th scope="row">Total Price</th>
+<td></td>
+<td></td>
+<td><%=totalPrice%></td>
+</tr>
+</tbody>
+</table>
+ 
 					</div>
-				</div>
-
+</div>
+ 
 			</div>
-
+ 
 			<div class="col-md-6">
-
+ 
 				<div class="card"
 					style="background-color: rgba(211, 211, 211, 0.7);">
-					<div class="card-body">
-						<h3 class="text-center text-success">Your Details For Order</h3>
-						<form action="order" method="POST">
-
+<div class="card-body">
+<h3 class="text-center text-success">Your Details For Order</h3>
+<form action="order" method="POST">
+ 
 							<input type="hidden" value="${userObj.id}" name="id" />
-
+ 
 							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="inputEmail4">Name</label> <input type="text"
+<div class="form-group col-md-6">
+<label for="inputEmail4">Name</label> <input type="text"
 										name="username" class="form-control" id="inputEmail4"
 										value="<%=u.getName()%>" required>
-								</div>
-								<div class="form-group col-md-6">
-									<label for="inputPassword4">Email</label> <input type="email"
+</div>
+<div class="form-group col-md-6">
+<label for="inputPassword4">Email</label> <input type="email"
 										name="email" class="form-control" id="inputPassword4"
 										value="<%=u.getEmail()%>" readonly="readonly">
-								</div>
-							</div>
-
+</div>
+</div>
+ 
 							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="inputEmail4">Phone Number</label> <input
+<div class="form-group col-md-6">
+<label for="inputEmail4">Phone Number</label> <input
 										type="number" name="phno" class="form-control"
 										id="inputEmail4" value="<%=u.getPhno()%>" required>
-								</div>
-								<div class="form-group col-md-6">
-									<label for="inputPassword4">Address</label> <input
+</div>
+<div class="form-group col-md-6">
+<label for="inputPassword4">Address</label> <input
 										name="address" type="text" class="form-control"
 										id="inputPassword4" required>
-								</div>
-							</div>
-
+</div>
+</div>
+ 
 							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="inputEmail4">Landmark</label> <input
+<div class="form-group col-md-6">
+<label for="inputEmail4">Landmark</label> <input
 										name="landmark" type="text" class="form-control"
 										id="inputEmail4" required>
-								</div>
-								<div class="form-group col-md-6">
-									<label for="inputPassword4">City</label> <input type="text"
+</div>
+<div class="form-group col-md-6">
+<label for="inputPassword4">City</label> <input type="text"
 										name="city" class="form-control" id="inputPassword4" required>
-								</div>
-							</div>
-
+</div>
+</div>
+ 
 							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="inputEmail4">State</label> <input type="text"
+<div class="form-group col-md-6">
+<label for="inputEmail4">State</label> <input type="text"
 										name="state" class="form-control" id="inputEmail4" required>
-								</div>
-								<div class="form-group col-md-6">
-									<label for="inputPassword4">Pin code</label> <input type="number"
+</div>
+<div class="form-group col-md-6">
+<label for="inputPassword4">Pin code</label> <input type="number"
 										name="pincode" class="form-control" id="inputPassword4"
 										required>
-								</div>
-							</div>
-
+</div>
+</div>
+ 
 							<div class="form-group">
-								<label>Payment Mode</label> <select class="form-control"
+<label>Payment Mode</label> <select class="form-control"
 									name="payment">
-									<option value="noselect">--Select--</option>
-									<option value="cod">Cash On Delivery</option>
-								</select>
-
+<option value="noselect">--Select--</option>
+<option value="cod">Cash On Delivery</option>
+</select>
+ 
 							</div>
-							<div class="text-center">
-
+<div class="text-center">
+ 
 								<button class="btn btn-warning">Order Now</button>
-								<a href="index.jsp"><button class="btn btn-success">Continue
+<a href="index.jsp"><button class="btn btn-success">Continue
 										Shopping</button> </a>
-
+ 
 							</div>
-						</form>
-					</div>
-				</div>
-
+</form>
+</div>
+</div>
+ 
 			</div>
-		</div>
-
+</div>
+ 
 	</div>
-
+ 
 </body>
 </html>
