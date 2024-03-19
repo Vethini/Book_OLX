@@ -111,7 +111,7 @@ body {
 							Category:
 							<%=b.getBookCategory()%></p>
 						<%
-						if (b.getBookCategory().equals("Old") && (b.getEmail() != null && !b.getEmail().equals("admin"))) {
+						if (b.getBookCategory().equals("Old") && (b.getEmail() != null && !b.getEmail().equals("bookolx05@gmail.com"))) {
 						%>
 						<div class="row d-flex justify-content-around">
 							<a href="view_books.jsp?bid=<%=b.getBookId()%>"

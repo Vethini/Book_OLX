@@ -35,7 +35,7 @@ public class BooksAdd extends HttpServlet{
 //			Part part = req.getPart("bimg");
 	//		String fileName = part.getSubmittedFileName();
 			
-			BookDetails b = new BookDetails(bookname, author, price, categories, status, referenceId, "admin");
+			BookDetails b = new BookDetails(bookname, author, price, categories, status, referenceId, "bookolx05@gmail.com");
 			BookDAOImpl daoImpl = new BookDAOImpl(DBConnect.getConn());
 			
 			

@@ -126,7 +126,7 @@ to {
 				style="background-color: rgba(255, 255, 255, 0.7);">
 <h2 style="color: green;"><%= b.getBookName() %></h2>
 
-<% if ("Old".equals(b.getBookCategory())) { %>
+<% if ("Old".equals(b.getBookCategory())&& (b.getEmail() != null && !b.getEmail().equals("bookolx05@gmail.com"))) { %>
 <h5 class="text-primary text-center">Contact To Seller</h5>
 
 <% } %>
@@ -149,7 +149,7 @@ to {
 <h3>Free Shipping</h3>
 </div>
 </div>
-<% if(b.getBookCategory().equals("Old") && (b.getEmail() != null && !b.getEmail().equals("admin"))) { %>
+<% if(b.getBookCategory().equals("Old") && (b.getEmail() != null && !b.getEmail().equals("bookolx05@gmail.com"))) { %>
 <div class="text-center p-3">
 <a href="index.jsp" class="btn btn-success"><i
 						class="fa-solid fa-cart-plus"></i> Continue Shopping</a> <a href=""

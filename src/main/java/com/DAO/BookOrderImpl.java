@@ -85,7 +85,7 @@ public class BookOrderImpl implements BookOrderDAO{
 	private boolean isBookActive(String bookName) {
 	    boolean isActive = false;
 	    try {
-	        String sql = "select status from book_dtls where bookname = ?";
+	        String sql = "select status from book_details where bookname = ?";
 	        PreparedStatement ps = conn.prepareStatement(sql);
 	        ps.setString(1, bookName);
 	        ResultSet rs = ps.executeQuery();

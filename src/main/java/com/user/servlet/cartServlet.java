@@ -35,7 +35,7 @@ public class cartServlet extends HttpServlet{
 			cart.setAuthor(b.getAuthor());
 			cart.setPrice(Double.parseDouble(b.getPrice()));
 			cart.setTotalPrice(Double.parseDouble(b.getPrice()));
-			System.out.println(cart);;
+			//System.out.println(cart);;
 			cartDAOimpl cartDAOimpl = new cartDAOimpl(DBConnect.getConn());
 			boolean f = cartDAOimpl.addcart(cart);
 			
